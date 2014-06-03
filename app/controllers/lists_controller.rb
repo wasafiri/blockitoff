@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
-    if @task.save
+    if @list.save
       flash[:notice] = "List was saved successfully."
     else
       flash[:error] = "Error creating list. Please try again."

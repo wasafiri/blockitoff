@@ -16,6 +16,15 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
   end
 
+  def complete!
+    @task = Task.find(params[:id])
+    if @tasks.update_attributes(completion)
+      flash[:notice] = "Task was marked complete."
+    else
+      flash[:error] = "Could not mark task complete. Please try again"
+    end
+  end
+
   def destroy
     @task = Task.find(params[:id])
   end
@@ -29,6 +38,10 @@ class TasksController < ApplicationController
 
   def task_params
     params[:task].permit(:description)
+  end
+
+  def completion
+    params[:task].permit(:completed_at)
   end
 
 end
