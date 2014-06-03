@@ -1,0 +1,36 @@
+# bloccitoff
+## a task management system
+
+### Requirements
+
+* As a user, I should be able to sign up for a free account by providing a user name, password and email address.
+* As a user, I should be able to sign in and out of Blocitoff.
+* As a user, I should be able to create a single to-do list.
+* As a user, I should be able to create multiple to-do items on my to-do list.
+* As a user, I should be able to mark to-do items as complete.
+* As a user, I should be able to see how many days are left before a to-do item is automatically deleted.
+* When a to-do item is marked as complete, it should be deleted from the to-do list.
+* To-do items should be automatically deleted after 7 days from their creation date.
+
+### Domain
+
+The domain of this app is _tasks_. This was determined by looking through the requirements and looking for the noun to repeat the most. It was to-do, which I then rename to something more sensical, 
+
+### The Task Model
+
+Task will need the following fields:
+
+* created_at (rails timestamps)
+* updated_at (rails timestamps)
+* completed_at
+
+
+Task will need the following methods:
+
+* complete! (will set completed_at = now and save)
+* time_till_expiration (created_at + x.days)
+
+# postgres database table "tasks"
+## columns "id", "completed_at", "created_at", "updated_at"
+
+
