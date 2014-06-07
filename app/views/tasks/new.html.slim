@@ -1,2 +1,5 @@
-h1 Tasks#new
-p Find me in app/views/tasks/new.html.slim
+h1 New task
+
+== render partial: 'form', locals: { list: @list, task: @task }
+
+= link_to 'Back', lists_path

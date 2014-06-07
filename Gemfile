@@ -6,6 +6,7 @@ gem 'devise', '3.2.4'
 gem 'minitest-rails', '2.0.1'
 gem 'slim-rails', '2.1.4'
 gem 'timecop', '0.7.1', group: [:development, :test]
+gem 'bootstrap-sass', '3.1.1.1'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '0.17.1'
