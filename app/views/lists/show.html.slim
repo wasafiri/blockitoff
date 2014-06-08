@@ -13,6 +13,7 @@ p
 p
   - @tasks.each do |task|
    p = link_to task.description, [@list, task]
+   = link_to "Mark Complete", task_task_completions_path(task), method: :post
 
 
 = link_to 'New task', new_list_task_path(@list)

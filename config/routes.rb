@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     resources :tasks, except: [:index]
   end
 
+  resources :tasks do
+    resources :task_completions
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
