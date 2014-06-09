@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   end
 
   resources :tasks do
-    resources :task_completions
+    resources :task_completions, only: [:create]
+    get '/task_completions' => 'task_completions#destroy', as: :get
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

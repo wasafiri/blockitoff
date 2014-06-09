@@ -2,12 +2,12 @@ class TaskCompletionsController < ApplicationController
 
   def create
     task.mark_complete!
-    redirect_to [@task.list, @task]
+    redirect_to [@task.list]
   end
 
   def destroy
     task.mark_incomplete!
-    redirect_to [@task.list, @task]
+    redirect_to [@task.list]
   end
 
 private
