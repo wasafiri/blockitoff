@@ -1,5 +1,6 @@
 class Task < ActiveRecord::Base
   belongs_to :list
+  belongs_to :user
 
   def expired?
     created_at >= 8.days.ago && completed_at.nil?
