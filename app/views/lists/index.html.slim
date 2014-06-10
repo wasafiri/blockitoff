@@ -3,14 +3,13 @@ html
 
 h1 Your task lists
 
-table
+table class="list_categories"
   thead
     tr
-      th List title
-      th List age
-      th Last edited
-      th
-      th
+      th width="30%"List title
+      th width="20%"List age
+      th width="20%"Last edited
+      th width="25%"Actions
 
   tbody
     - @lists.each do |list|
@@ -18,8 +17,8 @@ table
         td #{link_to list.title, list}
         td #{formatted_created_at(list)}
         td #{formatted_updated_at(list)}
-        td | #{link_to 'Edit', edit_list_path(list)} | #{link_to 'Destroy', list, data: {:confirm => 'Are you sure?'}, :method => :delete} |
+        td #{link_to 'Edit', edit_list_path(list)}  #{link_to 'Destroy', list, data: {:confirm => 'Are you sure?'}, :method => :delete}
 
 br
 
-  #{link_to 'New List', new_list_path}
+  #{link_to 'Create New List', new_list_path}

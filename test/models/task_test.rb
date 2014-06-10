@@ -8,4 +8,15 @@ describe Task do
       subject.expired?.must_equal true
     end
   end
+
+  describe "task completion" do
+    subject { Task.create!(description: "do some stuff", created_at: Time.now) }
+    it "must show the task as being marked complete" do
+
+      expect(subject.completed_at).to be_nil
+      visit_task_path
+      click_link "Mark Complete"
+    end
+    expect(subject.completed_at).to_not be_nil
+  end
 end

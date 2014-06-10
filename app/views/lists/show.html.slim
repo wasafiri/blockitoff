@@ -1,28 +1,29 @@
 doctype html
 html
 
- head
-  p#notice = notice
+h1 #{@list.title}
 
-p
-  strong List "#{@list.title}"
-p
-  #{formatted_created_at(@list)} since creation; #{formatted_updated_at(@list)} since last edit
+table class="task_categories"
+  thead
+    tr
+      th width="20%"Task
+      th width="20%"Task age
+      th width="15%"Last edited
+      th width="15%"Completed?
+      th width="20%"Actions
 
-body
-p
-  - @tasks.each do |task|
-   = task.description
-   '  |
-   - if task.completed_at.nil?
-    = link_to "Mark Complete", task_task_completions_path(task), method: :post
-   - else
-    = link_to "Mark Incomplete", task_get_path(task), method: :get
-   p
+  tbody
+    - @tasks.each do |task|
+      tr
+        td #{task.description}
+        td #{formatted_created_at(@list)}
+        td #{formatted_updated_at(@list)}
+        - if task.completed_at.nil?
+          td No #{link_to "Mark Complete", task_task_completions_path(task), :method => :post}
+        - else
+          td Yes #{link_to "Mark Incomplete", task_get_path(task), :method => :get}
+        td #{link_to "Edit", edit_list_path(@list)}
+br
 
-
-= link_to 'New task', new_list_task_path(@list)
-'  |
-= link_to 'Change list name', edit_list_path(@list)
-'  |
-= link_to 'View lists', lists_path
+  #{link_to "New task", new_list_task_path(@list)}
+  #{link_to "Back to list view", lists_path}

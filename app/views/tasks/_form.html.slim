@@ -7,6 +7,5 @@
           li = message
 
   .field
-    = f.label :description
-    = f.text_field :description
+    #{f.label :description}  #{f.text_field :description}
   .actions = f.submit 'Save'
