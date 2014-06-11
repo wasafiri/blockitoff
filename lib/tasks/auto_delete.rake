@@ -2,5 +2,9 @@
 
 desc "Deletes tasks older than 7 days"
 task delete_tasks: :environment do
-  Task.where(created_at >= 8.days.ago && completed_at.nil?).destroy_all
+  if Task.where(created_at >= 8.days.ago && completed_at.nil?).destroy_all
+    puts "Tasks deleted successfully"
+  else
+    puts "No tasks older than 8 days found."
+  end
 end

@@ -48,6 +48,13 @@ class TasksController < ApplicationController
 
   def destroy
     @task = Task.find(params[:id])
+
+    if @task.destroy
+      flash[:notice] = "\"#{@task}\" was deleted successfully."
+      redirect_to @list
+    else
+      flash[:error] = "There was an error deleting the task."
+    end
   end
 
   def time_til_expiry

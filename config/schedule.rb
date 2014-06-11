@@ -1,3 +1,5 @@
+#need to change delete_tasks? lib/tasks/auto_delete.rake
+
 every 1.day, :at => '1:00 am' do
   rake "delete_tasks"
 end

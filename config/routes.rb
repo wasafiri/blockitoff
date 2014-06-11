@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :tasks, except: [:index]
   end
 
-  resources :tasks do
+  resources :tasks, only: [] do
     resources :task_completions, only: [:create]
     get '/task_completions' => 'task_completions#destroy', as: :get
   end

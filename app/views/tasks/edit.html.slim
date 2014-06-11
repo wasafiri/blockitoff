@@ -1,5 +1,5 @@
-h1 = @tasks.description
+h1 = @task.description
 
   == render 'form'
 
-  = link_to 'Change description', edit_list_task_path(@list,@task)
+  = link_to 'Change description', edit_list_task_path(@list, task)
