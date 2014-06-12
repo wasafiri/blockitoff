@@ -3,6 +3,7 @@ class TasksController < ApplicationController
 
   def index
     @tasks = list.tasks
+    authorize @tasks
   end
 
   def show
@@ -12,6 +13,7 @@ class TasksController < ApplicationController
   def new
     @list = List.find params[:list_id]
     @task = @list.tasks.new
+    authorize @task
   end
 
   def edit
@@ -20,6 +22,7 @@ class TasksController < ApplicationController
 
   def create
     @task = list.tasks.build(task_params)
+    authorize @task
     if @task.save
       flash[:notice] = "Task was saved successfully."
       # you only need the parent in the route for

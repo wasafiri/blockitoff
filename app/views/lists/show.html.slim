@@ -13,7 +13,7 @@ table class="task_categories"
       th width="20%"Actions
 
   tbody
-    - @tasks.each do |task|
+    - @tasks.active.each do |task|
       tr
         td #{task.description}
         td #{formatted_created_at(task)}

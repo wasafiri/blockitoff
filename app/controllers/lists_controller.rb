@@ -15,6 +15,7 @@ class ListsController < ApplicationController
 
   def edit
     @list = List.find(params[:id])
+    authorize @list
   end
 
   def create
@@ -29,7 +30,7 @@ class ListsController < ApplicationController
 
   def update
     @list = List.find(params[:id])
-
+    authorize @list
     if @list.update_attributes(list_params)
       redirect_to @list
     else
