@@ -9,6 +9,7 @@ gem 'minitest-rails-capybara', '2.0.0', group: [:test]
 gem 'slim-rails', '2.1.4'
 gem 'timecop', '0.7.1', group: [:development, :test]
 gem 'bootstrap-sass', '3.1.1.1'
+gem 'bootstrap-generators', '3.1.1.3'
 gem 'rails_12factor', group: [:production]
 gem 'letter_opener', group: [:development]
 gem 'whenever', '0.9.2', :require => false
