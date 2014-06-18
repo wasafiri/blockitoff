@@ -6,14 +6,9 @@
         - @task.errors.full_messages.each do |message|
           li = message
 
-
-
-
-
-  div.field
-    .col-lg-3
-      = f.text_field :description, class: 'form-control'
-  div.actions
+  .field.col-md-3
+    = f.text_field :description, class: 'form-control'
+  .actions
     = f.submit 'Save', class: 'btn btn-success'
 
 br

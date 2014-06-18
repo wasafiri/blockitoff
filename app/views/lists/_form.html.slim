@@ -6,8 +6,9 @@
         - @list.errors.full_messages.each do |message|
           li = message
 
-  .div.field
-    .col-lg-3
-      = f.text_field :title, class: 'form-control'
-  div.actions
-      = f.submit 'Save', class: 'btn btn-success'
+  .field.col-md-3
+    = f.text_field :title, class: 'form-control'
+  .actions
+    = f.submit 'Save', class: 'btn btn-success'
+
+br
