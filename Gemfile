@@ -14,6 +14,7 @@ gem 'rails_12factor', group: [:production]
 gem 'letter_opener', group: [:development]
 gem 'whenever', '0.9.2', :require => false
 gem 'pundit', '0.2.3'
+gem 'warden', '1.2.3'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '0.17.1'

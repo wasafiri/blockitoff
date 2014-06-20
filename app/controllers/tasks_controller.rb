@@ -1,28 +1,32 @@
 class TasksController < ApplicationController
   before_filter :list
+  respond_to :json, :xml, :html
 
   def index
     @tasks = list.tasks
+    respond_with(@tasks)
     authorize @tasks
   end
 
   def show
     @task = list.tasks.find(params[:id])
+    respond_with @task
   end
 
   def new
     @list = List.find params[:list_id]
     @task = @list.tasks.new
+    respond_with @task
     authorize @task
   end
 
   def edit
     @task = list.tasks.find(params[:id])
+    respond_with @task
   end
 
   def create
     @task = list.tasks.build(task_params)
-    authorize @task
     if @task.save
       flash[:notice] = "Task was saved successfully."
       # you only need the parent in the route for
@@ -36,6 +40,8 @@ class TasksController < ApplicationController
     else
       flash[:error] = "Error creating task. Please try again."
     end
+    respond_with @task
+    authorize @task
   end
 
   def update
@@ -47,6 +53,7 @@ class TasksController < ApplicationController
     else
       flash[:error] = "Error changing description. Please try again."
     end
+    respond_with @task
   end
 
   def destroy
@@ -58,6 +65,7 @@ class TasksController < ApplicationController
     else
       flash[:error] = "There was an error deleting the task."
     end
+    respond_with @task
   end
 
   def time_til_expiry
