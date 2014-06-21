@@ -1,36 +1,27 @@
 # bloccitoff
 ## a task management system
 
-### Requirements
+This branch adds support for interacting with blockitoff via xml/json.
 
-* As a user, I should be able to sign up for a free account by providing a user name, password and email address.
-* As a user, I should be able to sign in and out of Blocitoff.
-* As a user, I should be able to create a single to-do list.
-* As a user, I should be able to create multiple to-do items on my to-do list.
-* As a user, I should be able to mark to-do items as complete.
-* As a user, I should be able to see how many days are left before a to-do item is automatically deleted.
-* When a to-do item is marked as complete, it should be deleted from the to-do list.
-* To-do items should be automatically deleted after 7 days from their creation date.
+To test via command-line:
 
-### Domain
+# login
+curl -H "Content-Type: application/json" -d '{"email":"emailhere","password":"passhere"}' \
+        -X POST http://localhost:3000/user/sign_in
 
-The domain of this app is _tasks_. This was determined by looking through the requirements and looking for the noun to repeat the most. It was to-do, which I then rename to something more sensical, 
+or to use a cookie:
 
-### The Task Model
+curl -H "Content-Type: application/json" -d '{"email":"dbahar@gwu.edu","password":"testtest"}' \
+        -X POST http://localhost:3000/users/sign_in -c cookie
 
-Task will need the following fields:
+# access stuff
 
-* created_at (rails timestamps)
-* updated_at (rails timestamps)
-* completed_at
+example -->
 
+we want to get lists index.
+routes.rb:          lists GET    /lists(.:format)                           lists#index
 
-Task will need the following methods:
+curl -X GET http://localhost:3000/lists.json
 
-* complete! (will set completed_at = now and save)
-* time_till_expiration (created_at + x.days)
-
-# postgres database table "tasks"
-## columns "id", "completed_at", "created_at", "updated_at"
-
-
+with token?
+curl -X GET -H 'Authorization: Token token="r6VCfFN7cs9biwXq1Zq8sS4ZFX_8VF-x-Q"' http://localhost:3000/lists.json

@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_filter :list
-  respond_to :json, :xml, :html
+  respond_to :json, :html
 
   def index
     @tasks = list.tasks

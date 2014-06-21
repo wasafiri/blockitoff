@@ -2,8 +2,9 @@
 
 class SessionsController < Devise::SessionsController
   skip_before_filter :authenticate_user!, :only => [:create, :new]
-  skip_authorization_check only: [:create, :failure, :show_current_user, :options, :new]
-  respond_to :json
+  skip_before_filter :verify_authenticity_token
+  # skip_authorization_check only: [:create, :failure, :show_current_user, :options, :new]
+  respond_to :json, :html
 
   def new
     self.resource = resource_class.new(sign_in_params)
@@ -15,9 +16,6 @@ class SessionsController < Devise::SessionsController
   # until we either reset the token (typically via TTL) or the user resets the token via #destroy
   def create
     respond_to do |format|
-      format.html {
-        super
-      }
       format.json {
 
         resource = resource_from_credentials
@@ -25,7 +23,7 @@ class SessionsController < Devise::SessionsController
         return invalid_login_attempt unless resource
 
         if resource.valid_password?(params[:password])
-          render :json => { user: { email: resource.email, :auth_token => resource.authentication_token } }, success: true, status: :created
+          render :json => JSON.pretty_generate({ user: { email: resource.email, :auth_token => resource.authentication_token } }), success: true, status: :created
         else
           invalid_login_attempt
         end
