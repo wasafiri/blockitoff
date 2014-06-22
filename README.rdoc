@@ -23,5 +23,5 @@ routes.rb:          lists GET    /lists(.:format)                           list
 
 curl -X GET http://localhost:3000/lists.json
 
-with token?
-curl -X GET -H 'Authorization: Token token="r6VCfFN7cs9biwXq1Zq8sS4ZFX_8VF-x-Q"' http://localhost:3000/lists.json
+with token & email ( both are required )
+curl -X GET http://localhost:3000/lists.json -H "X-Api-Token: r6VCfFN7cs9biwXq1Zq8sS4ZFX_8VF-x-Q, X-API-EMAIL: dbahar@gwu.edu"

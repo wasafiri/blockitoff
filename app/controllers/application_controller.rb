@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   before_filter :authenticate_user_from_token! #api
-  before_filter :authenticate_user! #api
+  # before_filter :authenticate_user! #api - was making auth fail
 
   rescue_from Pundit::NotAuthorizedError do |exception|
     redirect_to root_url, alert: exception.message
