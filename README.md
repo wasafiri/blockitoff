@@ -1,7 +1,7 @@
 # bloccitoff
 ## a task management system
 
-This branch adds support for interacting with blockitoff via xml/json.
+This branch adds support for interacting with blockitoff via json.
 
 To test via command-line:
 
