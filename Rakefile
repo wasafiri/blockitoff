@@ -6,3 +6,4 @@ require File.expand_path('../config/application', __FILE__)
 Rails.application.load_tasks
 
 Dir["./lib/tasks/**/*.rake"].sort.each { |t| load t }
+Dir.glob('./spec/**/*_spec.rb').each { |file| require file}
